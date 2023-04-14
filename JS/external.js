@@ -17,5 +17,20 @@ console.log(" You are renting the Hercules for " + userInputLM + " Days");
 
 let total = 3 *(userInputLM + userInputBB + userInputHercules);
 
-Alert("Your total for rental movie is" + total);
+alert("Your total for rental movie is" + total);
+
+let payGoogle = 400
+let payAmazon = 380
+let payFacebook= 350
+
+let hoursFacebook= parseInt(prompt("How many hours did you work at Google?"));
+console.log('The user entered: ' + hoursFacebook);
+let hoursGoogle= parseInt(prompt("How many hours did you work at Google?"));
+console.log(" You worked at Amazon for " + hoursGoogle);
+let hoursAmazon= parseInt(prompt("How many hours did you work at Amazon?"));
+console.log(" You worked at Facebook for " + hoursAmazon);
+
+let pay = (payGoogle * hoursGoogle) + (payAmazon * hoursAmazon) + (payFacebook *hoursFacebook);
+alert("Your the total amount in payment you will receive this week is " + pay);
+
 
