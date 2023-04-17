@@ -33,4 +33,24 @@ console.log(" You worked at Facebook for " + hoursAmazon);
 let pay = (payGoogle * hoursGoogle) + (payAmazon * hoursAmazon) + (payFacebook *hoursFacebook);
 alert("Your the total amount in payment you will receive this week is " + pay);
 
+let class_full = confirm('Does the class have any available seats?');
+let schedule = confirm('No conflict in schedule.');
+if(class_full && schedule{
+    alert("you are enrolled.");
+}else{
+    alert("Sorry, you can not be enrolled at this time.")
+    console.log("You will not be enrolled at this time.");
+}
 
+
+let itemNumber = parseInt(prompt('What is the number of times you are purchasing?');
+let expired = confirm('Does the coupon have an expired date.');
+let primeMem = confirm('Are you a prime member?');
+if(itemNumber > 2 && expired || primeMem) {
+    alert("Offer is valid!");
+    console.log("Offer is valid.");
+}
+else {
+    alert("Sorry, offer is not valid!")
+    console.log("Sorry, offer is not valid!");
+}
