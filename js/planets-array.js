@@ -48,11 +48,15 @@
     console.log("Reversing the order of the planets array.");
     console.log(planets);
 
-    let reversedplanets = copyOfArray(planets);
+    planets.reverse();
+   // let reversedplanets = copyOfArray(planets);
 
-    reversedPlanets.reverse();
+    //reversedPlanets.reverse();
 
 
     console.log("Sorting the planets array.");
     console.log(planets);
+
+    planets.sort();
+
 })();
