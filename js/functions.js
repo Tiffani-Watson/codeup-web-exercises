@@ -114,3 +114,82 @@ function applyDiscount(originalPrice, discountPercent) {
 
 console.log(applyDiscount(45.99, 0.12));
 
+
+//practice for quiz
+
+//Write a function named remainder that will accept two arguments and
+// return the remainder of a division between the two values (the first
+// divided by the second). If either argument is not a number, the
+// function should return false .
+
+function remainder(a, b) {
+    // Check if either argument is not a number
+    if (typeof a !== 'number' || typeof b !== 'number') {
+        return false;
+    }
+
+    // Calculate the remainder of a divided by b
+    return a % b;
+}
+// Write a function named containsAce that takes in an argument and
+// returns true if the argument passed is a string that contains the
+// sequence of characters "ace" somewhere within the string. This
+// check should be case insensitive. The function should return false
+// if the argument is not a string, or if it doesn't contain "ace" ' +
+// 'somewhere in the string.
+
+function containsAce(str) {
+    // Check if the argument is a string
+    if (typeof str !== 'string') {
+        return false;
+    }
+
+    // Check if the string contains the substring "ace" (case insensitive)
+    return str.toLowerCase().includes('ace');
+}
+
+// Write a function named divisibleBy5 that accepts
+// an argument returns true is the argument a number
+// that is evenly divisible by 5. If the argument provided
+// is either not a number, or is not evenly divisibile by
+// 5, the function should return false .
+
+function divisibleBy5(num) {
+    // Check if the argument is a number and is evenly divisible by 5
+    if (typeof num !== 'number' || num % 5 !== 0) {
+        return false;
+    }
+
+    return true;
+}
+
+
+// Write a function named averageThreeNumbers that accepts three arguments,
+//     and returns the average (mean) of the three arguments if all three
+// arguments are numbers. If any/all of the three arguments are not a number,
+//     or if there are fewer than three arguments, the function should return
+// false .
+
+function averageThreeNumbers(a, b, c) {
+    // Check if there are exactly three arguments and if all of them are numbers
+    if (arguments.length !== 3 || typeof a !== 'number' || typeof b !== 'number' || typeof c !== 'number') {
+        return false;
+    }
+
+    // Calculate the average of the three numbers
+    return (a + b + c) / 3;
+}
+// Write a function named stringsAreSameLength that accepts two
+// arguments and returns true if both arguments are strings of
+// the same length. If either argument is not a string, has
+// fewer than two arguments, or if the two strings are of different
+// lengths, the function should return false .
+
+function stringsAreSameLength(str1, str2) {
+    // Check if there are exactly two string arguments and if they have the same length
+    if (arguments.length !== 2 || typeof str1 !== 'string' || typeof str2 !== 'string' || str1.length !== str2.length) {
+        return false;
+    }
+
+    return true;
+}
