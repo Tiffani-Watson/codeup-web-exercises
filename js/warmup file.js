@@ -25,6 +25,7 @@
 // findFactors(); // returns false;
 
 
+
 function findFactors(num) {
     if (typeof num !== "number") {
         return false;
