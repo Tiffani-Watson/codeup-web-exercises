@@ -72,3 +72,17 @@ function countEs(str) {
 
     return count;
 }
+
+//May 3
+
+// Write a function that takes in a string and returns true if the argument contains at least one instance of the letter 'e'. This should be case-insensitive. If the argument is not a string, or if the argument does not contain 'e' it should return false.
+
+
+
+function containsLetterE(input) {
+    if (typeof input !== 'string') {
+        return false; // Input is not a string, return false
+    }
+    // Convert input to lowercase and check if it contains the letter 'e'
+    return input.toLowerCase().indexOf('e') !== -1;
+}
