@@ -79,10 +79,19 @@ function countEs(str) {
 
 
 
-function containsLetterE(input) {
-    if (typeof input !== 'string') {
-        return false; // Input is not a string, return false
+// function containsLetterE(input) {
+//     if (typeof input !== 'string') {
+//         return false; // Input is not a string, return false
+//     }
+//     // Convert input to lowercase and check if it contains the letter 'e'
+//     return input.toLowerCase().indexOf('e') !== -1;
+}
+
+
+function containsE(str) {
+    if (countEs(str) === false) {
+        return false;
+    }else {
+        return countEs(str) >0;
     }
-    // Convert input to lowercase and check if it contains the letter 'e'
-    return input.toLowerCase().indexOf('e') !== -1;
 }
