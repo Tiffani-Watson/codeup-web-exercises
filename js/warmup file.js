@@ -117,11 +117,3 @@ function fizzBuzz() {
 }
 
 
-function fizzBuzz() {
-    for (leti = 0;i<=100;i++)
-    {
-        console.log(i);
-    }
-}
-
-fizzBuzz();
