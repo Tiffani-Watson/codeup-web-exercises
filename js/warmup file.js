@@ -71,7 +71,7 @@ function countEs(str) {
     const count = (lowercaseStr.match(/e/g) || []).length;
 
     return count;
-}
+
 
 //May 3
 
