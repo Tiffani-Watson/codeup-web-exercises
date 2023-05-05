@@ -115,5 +115,18 @@ function fizzBuzz() {
         }
     }
 }
+// Warm up for 5 May 2023
 
+// let num = 2;
+//
+// do {
+//   console.log(num);
+//   num = num ** 2;
+// } while (num < 1000000);
 
+let num = 2;
+
+do {
+    console.log(num);
+    num = num ** 2;
+} while (num < 1000000);
