@@ -291,6 +291,18 @@ function explainString() {}
 
 console.log(explainString("cheese")); // returns {string: "cheese", numberOfEs: 3, isEvenLength: true}
 console.log(explainString("dog")); // returns {string: "dog", numberOfEs: 0, isEvenLength: false}
+
+// Below is David's solution'
+
+// function explainString(str){
+//     return{
+//         string: str,
+//         numberOfEs: countEs(str),
+//         isEvenLength: str.lenth % 2 === 0
+//     }
+// }
+
+// My solution is below
 function explainString(str) {       // The function takes a string str as input.
     const numberOfEs = (str.match(/e/gi) || []).length;
     const isEvenLength = str.length % 2 === 0;
@@ -300,3 +312,70 @@ function explainString(str) {       // The function takes a string str as input.
 // The numberOfEs variable is initialized with the number of times the letter "e" appears in the string, using a regular expression to match both upper and lowercase "e"s globally (/e/gi). If there are no matches, numberOfEs will be zero.
 // The isEvenLength variable is set to true if the length of the string is even, and false otherwise.
 // The function returns an object with the original string, the count of "e"s, and whether the length is even or not.
+
+
+
+// May 12 Warm up
+
+// Write a function that takes in an array of objects and returns an array containing all of the names from the original array.
+
+// const hamsters = [
+//     {
+//         name: "Hamtaro",
+//         heightInMM: 86,
+//         fur: ['orange', 'white'],
+//         gender: "male",
+//         dateOfBirth: "August 6"
+//     } , {
+//         name: "Bijou",
+//         heightInMM: 75,
+//         fur: ['white'],
+//         gender: "female",
+//         dateOfBirth: "July 10"
+//     } , {
+//         name: "Oxnard",
+//         heightInMM: 100,
+//         fur: ['grey', 'white'],
+//         gender: "male",
+//         dateOfBirth: "May 3"
+//     } , {
+//         name: "Boss",
+//         heightInMM: 120,
+//         fur: ['brown', 'white'],
+//         gender: "male",
+//         dateOfBirth: "September 21"
+//     } , {
+//         name: "Snoozer",
+//         heightInMM: 85,
+//         fur: ['brown', 'white', "pink"],
+//         gender: "male",
+//         dateOfBirth: "January 14"
+//     }
+// ];
+//
+// function extractNames() {}
+//
+// console.log(extractNames(hamsters)); // returns ["Hamtaro", "Bijou", "Oxnard", "Boss", "Snoozer"];
+//
+
+
+function extractNames(arr) {
+    return arr.map(obj => obj.name);
+}
+
+// another way is
+
+function extractNames(hamsters) {
+    return hamsters.map(hamster => hamster.name);
+}
+
+
+//Instructors answer:
+
+function extractNames(arr){
+    let bucket = [];
+    arr.forEach(function(el) {
+        bucket.push(el.name);
+    })
+    return bucket;
+}
