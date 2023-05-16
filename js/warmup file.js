@@ -379,3 +379,73 @@ function extractNames(arr){
     })
     return bucket;
 }
+
+// 5-15 java warmup
+
+// Write a function that takes in an array of objects and returns the object with the largest heightInMM property
+
+const getTallest = function(){};
+
+console.log(getTallest(hamsters)); // returns {name: "Boss", heightInMM: 120, fur: ['brown', 'white'], gender: "male", dateOfBirth: "September 21"}
+
+
+
+
+function findTallestObject(objects) {
+    if (!objects || objects.length === 0) {
+        return null;
+    }
+
+    let tallestObject = objects[0];
+
+    for (let i = 1; i < objects.length; i++) {
+        if (objects[i].heightInMM > tallestObject.heightInMM) {
+            tallestObject = objects[i];
+        }
+    }
+
+    return tallestObject;
+}
+function findTallestObject(objects) {
+    if (!objects || objects.length === 0) {
+        return null;
+    }
+
+    let tallestObject = objects[0];
+
+    for (let i = 1; i < objects.length; i++) {
+        if (objects[i].heightInMM > tallestObject.heightInMM) {
+            tallestObject = objects[i];
+        }
+    }
+
+    return tallestObject;
+}
+function findTallestObject(objects) {
+    if (!objects || objects.length === 0) {
+        return null;
+    }
+
+    let tallestObject = objects[0];
+
+    for (let i = 1; i < objects.length; i++) {
+        if (objects[i].heightInMM > tallestObject.heightInMM) {
+            tallestObject = objects[i];
+        }
+    }
+
+    return tallestObject;
+}
+
+
+// May 16
+// Write a function that takes in an array of objects and returns an array of the objects from the array that only have one fur color.
+
+function singleFurColor() {}
+
+console.log(singleFurColor(hamsters)); // returns [{name: "Bijou", heightInMM: 75, fur: ['white'], gender: "female", dateOfBirth: "July 10"}];
+
+
+function singleFurColor(arr) {
+    return arr.filter(obj => obj.fur.length === 1);
+}
