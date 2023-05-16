@@ -446,6 +446,19 @@ function singleFurColor() {}
 console.log(singleFurColor(hamsters)); // returns [{name: "Bijou", heightInMM: 75, fur: ['white'], gender: "female", dateOfBirth: "July 10"}];
 
 
-function singleFurColor(arr) {
-    return arr.filter(obj => obj.fur.length === 1);
+function singleFurColor(hamsters) {
+    return hamsters.filter(hamster => hamster.fur.length === 1);
 }
+console.log(singleFurColor(hamsters));
+
+// function oneFurColor(arr) {
+//     let newArr = [];
+//     arr.forEach(fuunction(elem)
+//    if(elem.fur.lenth === 1) {
+// newArr.push(elem);
+//     }
+// )
+// return newArr;
+// }
+// oneFurColor(hamsters);
+// console.log(oneFurColor(hamsters));
