@@ -495,5 +495,28 @@ function mostColorful(hamsters) {
 
 
 
-//Instructors sample:
 
+
+
+
+
+
+// May 19th warm up
+
+// Write a JavaScript function that takes in a number and returns an object with the following fields: number, which will contain the original number; evenOrOdd, which will contain a string ("even" or "odd") as to whether the value is even or odd; factors, an array of numbers that are evenly divisible within the number passed; and numberOfDigits, a number counting the number of digits with the number passed.
+
+function describeNumber() {}
+
+console.log(describeNumber(19)); // returns {number: 19, evenOrOdd: "odd", factors: [1,19], numberOfDigits: 2};
+console.log(describeNumber(2)); // returns {number: 2, evenOrOdd: "even", factors: [1,2], numberOfDigits: 1};
+
+
+
+
+
+
+function multiplyElementsByThree(numbers) {
+    return numbers.map(function(number) {
+        return number * 3;
+    });
+}
