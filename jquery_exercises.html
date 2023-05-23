@@ -3,46 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
+    <style>
+        .hover-li {
+            color: black;
+        }
+    </style>
 </head>
 <body>
 <h1>Sub-section</h1>
 <p>Amet optio quidem voluptatum neque esse at saepe, reiciendis quaerat architecto unde minima aspernatur harum cum totam non amet soluta. Ea quae odio harum magni ab vitae tenetur. Itaque numquam!</p>
 
 <ul style="list-style-type:none;">
-    <li>KentBeck</li>
-    <li>Member</li>
-    <li>X team members</li>
+    <li class="hover-li">KentBeck</li>
+    <li class="hover-li">Member</li>
+    <li class="hover-li">X team members</li>
 </ul>
 
-<div id="social-media-links" >
+<div id="social-media-links">
     <ul style="list-style-type:none;">
-        <li>A</li>
-        <li>B</li>
-        <li>C</li>
+        <li class="hover-li">A</li>
+        <li class="hover-li">B</li>
+        <li class="hover-li">C</li>
     </ul>
 </div>
 
-<div class="codeup">
-</div>
-<div class="codeup">
-</div>
-<div class="codeup">
-</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Change background color of h1 when clicked
+        $('h1').click(function() {
+            $(this).css('background-color', 'yellow');
+        });
 
-<!--<section id="main" class="main">-->
-<!--    <h2>Main Section</h2>-->
-<!--    <p>Amet lorem accusantium maxime quis iusto. Sit aliquid quidem at animi commodi, iusto harum, non. Accusantium sequi consectetur deleniti soluta tempora. Maxime maiores blanditiis veritatis vitae amet maiores sapiente in?</p>-->
-<!--</section>-->
+        // Set font size of paragraphs to 18px when double clicked
+        $('p').dblclick(function() {
+            $(this).css('font-size', '18px');
+        });
 
-
-
-
-
-
-
-
-
-<script src="js/jquery_exercises.js"></script>
+        // Change li text color to red on hover
+        $('li').hover(
+            function() {
+                $(this).css('color', 'red');
+            },
+            function() {
+                $(this).css('color', 'black');
+            }
+        );
+    });
+</script>
 </body>
 </html>
