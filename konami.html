@@ -1,56 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Konami Code Exercise</title>
-  <style>
-    h1 {
-      background-color: mediumpurple;
-      font-family: "Apple Color Emoji";
-      margin-left: auto;
-      margin-right: auto;
-      width: 50%;
-      text-align: center;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Konami Code</title>
 </head>
 <body>
-<h1>Please! Press the Konami Code here:</h1>
+<h1>Konami Code</h1>
+<form>
+  <h2>Type in your cheat code here</h2>
+  <input id="textfield" type="text" placeholder="Type here"/>
+  <div id="lives"></div>
+</form>
 
-<div class="body"></div>
-
-<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-
+<script src="js/jquery.js"></script>
 <script>
-  $(document).ready(function() {
-    alert("Welcome to Konami Coding!");
-    var index = 0;
-    var konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+  "use strict";
 
-    <audio controls src="./audio/Streets.mp3"></audio>
-    let unlockSound = new Audio('./audio/Streets.mp3');
+  var cheatKeys = {
+    38: 'up',
+    40: 'down',
+    37: 'left',
+    39: 'right',
+    66: 'b',
+    65: 'a'
+  };
+  var konami = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a'];
 
-    $(document).keydown(function(e) {
-      console.log(e.keyCode);
 
-      if (e.keyCode === konami[index++]) {
-        $('#' + index).addClass('on');
+  var input = $('#textfield').keydown(function (event) {
+    var i = 0;
+    var key = cheatKeys[event.keyCode];
+    var requiredKey = konami[i];
 
-        if (index === konami.length) {
-          alert("You have added 30 lives!");
-          $('.body').css("background-image", "url('./img/konami.png')");
-          document.body.style.backgroundImage = "url('./img/konami.png')";
-
-          unlockSound.play();
-          index = 0;
-        }
-      } else {
-        alert("Please try again.");
-        index = 0;
+    if (key === requiredKey) {
+      i++;
+      if (i === konami.length) {
+        cheatActive();
+        i = 0;
       }
-    });
+    } else {
+      i = 0;
+    }
   });
+
+
+
+  $('#lives').html('3 &hearts;');
+
+  //function that checks if keys were pushed in correct order
+  function cheatActive() {
+    $('body').css('background-color', '#add8e6');
+
+    var win = new Audio('tada.mp3');
+    win.play();
+    $('#lives').html('30 &hearts;');
+    alert('Activated Cheat');
+  }
+
+  //TODO: currently only recognizes code if nothing else is typed in before
+
 </script>
 </body>
 </html>

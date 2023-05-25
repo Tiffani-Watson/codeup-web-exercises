@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Store</title>
+</head>
+<body>
+
+<h1>My Tool Store</h1>
+
+<button id="reload-btn">Refresh</button>
+<hr>
+<div class="table-responsive">
+    <table id="products" class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col" colspan="5">Title</th>
+            <th scope="col" colspan="3">Quantity</th>
+            <th scope="col" colspan="3">Price</th>
+            <th scope="col" colspan="3">Categories</th>
+        </tr>
+    </thead>
+    <tbody id="insertProducts"></tbody>
+</table>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>-->
+
+<script>
+(function() {
+    "use strict";
+    // TODO: Create an AJAX GET request for the file under data/inventory.json
+
+    // TODO: Take the data from inventory.json and append it to the products table
+    //       HINT: Your data should come back as a JSON object; use console.log() to inspect
+    //             its contents and fields
+    //       HINT: You will want to target #insertProducts for your new HTML elements
+
+    $.ajax("data/inventory.json", {
+        "format": "json"
+    }).done(function (data) {
+        console.log(data.title);
+        let finalHTML = '';
+        for (var i = 0; i < data.length; i++) {
+            finalHTML +=
+                '<tr>' +
+                '<th scope="row">' + (i + 1) + '</th>' +
+                '<td colspan="5">' + data[i].title + '</td>' +
+                '<td colspan="3">' + data[i].quantity + '</td>' +
+                '<td colspan="3">' + data[i].price + '</td>' +
+                '<td colspan="3">' + data[i].categories + '</td>' +
+                '</tr>'
+
+
+
+
+        }
+        $('#insertProducts').append(finalHTML);
+    });
+    $('#reload-btn').click(function () {
+        location.reload();
+
+    })
+
+
+})();
+</script>
+
+
+</body>
+</html>
