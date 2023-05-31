@@ -34,10 +34,11 @@
 <!--    <option value="15">Zoom level 15</option>-->
 <!--</select>-->
 
-<!--for the keys file-->
+<!--linked files-->
 <script src="js/keys.js"></script>
 <script src="js/mapbox-geocoder-utils.js"></script>
 
+<!--the map-->
 <script>
     // TO MAKE THE MAP APPEAR YOU MUST
     // ADD YOUR ACCESS TOKEN FROM
@@ -47,8 +48,11 @@
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/streets-v11', // style URL
         zoom: 10, // starting zoom
-        center: [-98.4916, 29.4252] // [lng, lat]
+        center: [24.4539, 54.3773] // [lng, lat]
     });
+
+
+    // first favorite restaurant
 
     geocode("f8cx+xr - Abu Dhabi - united arab emirates", MyApiKey).then(function(result) {
         console.log(result);
@@ -62,6 +66,43 @@
 
         marker.setPopup(restaurantPopup)
     });
+
+
+    // second favorite restaurant
+
+
+
+    geocode("G92Q+GV Abu Dhabi - United Arab Emirates", MyApiKey).then(function(t) {
+        console.log(t);
+        map.setCenter(t);
+        map.setZoom(17);
+        let marker = new mapboxgl.Marker()
+            .setLngLat(t)
+            .addTo(map);
+        let restaurantPopup = new mapboxgl.Popup()
+            .setHTML("<p>The Galleria Al Maryah Island</p>")
+
+        marker.setPopup(restaurantPopup)
+
+
+
+    });
+
+    var marker = new mapboxgl.Marker()
+        .setLngLat([-98.4916, 29.4260])
+        .addTo(map);
+
+
+
+    restaurant.forEach(function(restaurant) {
+        geocode(restaurant.address, MyApiKey)
+            .then(function (result) {
+                var markerOptions = {
+                    color: '#5cffd0',
+                    draggable: true
+
+                }
+            })})
 </script>
 
 </body>
