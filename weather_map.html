@@ -2,150 +2,106 @@
 <html lang="en">
 <head>
     <title>Weather App</title>
-    <link rel="stylesheet" type="text/css" href="css/weather_styles.css">
+    <style>
+        body {
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .card {
+            display: inline-block;
+            width: 300px;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .default {
+            background-color: #f2f2f2;
+        }
+
+        .clear {
+            background-color: #eff8ff;
+        }
+
+        .clouds {
+            background-color: #dce4e8;
+        }
+
+        .rain {
+            background-color: #d9e3f0;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<!--    <script src="js/keys.js"></script>-->
+    <script src="js/weather_map.js"></script>
+    <script>
+        $(document).ready(function() {
+            let latLong = [29.7604, -95.3698];
+            $.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${latLong[0]}&lon=${latLong[1]}&appid=e37273f7d8371c5675f3c31021d626c5`, function(data) {
+                console.log(data);
+                let weatherData = data.list.slice(0, 5);
+                let weatherClasses = [];
+                weatherData.forEach(function(item) {
+                    let weather = item.weather[0].main;
+                    let weatherClass = 'default';
+                    switch (weather) {
+                        case 'Clear':
+                            weatherClass = 'clear';
+                            break;
+                        case 'Clouds':
+                            weatherClass = 'clouds';
+                            break;
+                        case 'Rain':
+                            weatherClass = 'rain';
+                            break;
+                        // Add more cases for different weather conditions if needed
+                    }
+                    weatherClasses.push(weatherClass);
+                });
+                $('.card').each(function(index) {
+                    $(this).addClass(weatherClasses[index]);
+                    $(this).find('.weather-info').text(weatherData[index].weather[0].description);
+                    $(this).find('.temperature').text(Math.round(weatherData[index].main.temp - 273.15) + "°C");
+                });
+            });
+        });
+    </script>
 </head>
 <body>
-<h1>Current Weather</h1>
-
-<div id="weather"></div>
-
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script src="js/keys.js"></script>
-<script src="js/weather_map.js"></script>
-
-<script>
-    $(document).ready(function() {
-        let latLong = [29.7604, -95.3698];
-        $.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${latLong[0]}&lon=${latLong[1]}&appid=${MyOW_Key}`, function(data) {
-            console.log(data);
-        });
-    });
-</script>
+<div class="card">
+    <h1>Weather Forecast</h1>
+    <h2>Huntsville, Alabama</h2>
+    <div class="weather-info"></div>
+    <div class="temperature"></div>
+</div>
+<div class="card">
+    <h1>Weather Forecast</h1>
+    <h2>Huntsville, Alabama</h2>
+    <div class="weather-info"></div>
+    <div class="temperature"></div>
+</div>
+<div class="card">
+    <h1>Weather Forecast</h1>
+    <h2>Huntsville, Alabama</h2>
+    <div class="weather-info"></div>
+    <div class="temperature"></div>
+</div>
+<div class="card">
+    <h1>Weather Forecast</h1>
+    <h2>Huntsville, Alabama</h2>
+    <div class="weather-info"></div>
+    <div class="temperature"></div>
+</div>
+<div class="card">
+    <h1>Weather Forecast</h1>
+    <h2>Huntsville, Alabama</h2>
+    <div class="weather-info"></div>
+    <div class="temperature"></div>
+</div>
 </body>
 </html>
-
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Weather Map</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<script src ="js/keys.js"></script>-->
-<!--<script src ="https://code.jquery.com/jquery-3.7.0.min.js"></script>-->
-
-
-<!--<script>-->
-<!--    let latLong = [29.7604, -95.3698];-->
-<!--    $.get('https://api.openweathermap.org/data/2.5/forecast?lat=${latLong[0]}&lon=${latLong[1]}&appid={MyOW_Key}');-->
-<!--    console.log(data);-->
-<!--</script>-->
-
-
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>WeatherMap</title>-->
-<!--</head>-->
-<!--<body>-->
-
-<!--&lt;!&ndash;top section in blue including search feature&ndash;&gt;-->
-<!--<h1 id="main-header" class="bg-primary">Weather App</h1>-->
-<!--<div class="searchRow">-->
-<!--    <form id="form1">-->
-<!--        <input type="text" id="search">-->
-<!--        <button class="btn btn-primary" type="submit" id="submit">Find</button>-->
-<!--    </form>-->
-<!--</div>-->
-<!--<div class="page-wrapper container-fluid">-->
-
-
-
-<!--<div id="weather-info">-->
-
-<!--</div>-->
-
-<!--<script src="js/keys.js"></script>-->
-<!--<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>-->
-<!--<script>-->
-<!--    let latLong = [29.7604, -95.3698];-->
-<!--    $.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${latLong[0]}&lon=${latLong[1]}&units=imperial&appid=${MyOW_Key}`).done(function(data) {-->
-<!--        console.log(data);-->
-<!--        let todayDate = new Date(data.list[0].dt * 1000);-->
-<!--        let month;-->
-<!--        let day;-->
-
-<!--        switch (todayDate.getMonth()) {-->
-<!--            case 0:-->
-<!--                month = 'January';-->
-<!--                break;-->
-<!--            case 1:-->
-<!--                month = 'February';-->
-<!--                break;-->
-<!--            case 2:-->
-<!--                month = 'March';-->
-<!--                break;-->
-<!--            case 3:-->
-<!--                month = 'April';-->
-<!--                break;-->
-<!--            case 4:-->
-<!--                month = 'May';-->
-<!--                break;-->
-<!--            case 5:-->
-<!--                month = 'June';-->
-<!--                break;-->
-<!--            case 6:-->
-<!--                month = 'July';-->
-<!--                break;-->
-<!--            case 7:-->
-<!--                month = 'August';-->
-<!--                break;-->
-<!--            case 8:-->
-<!--                month = 'September';-->
-<!--                break;-->
-<!--            case 9:-->
-<!--                month = 'October';-->
-<!--                break;-->
-<!--            case 10:-->
-<!--                month = 'November';-->
-<!--                break;-->
-<!--            case 11:-->
-<!--                month = 'December';-->
-<!--                break;-->
-<!--            default:-->
-<!--                month = 'Smarch';-->
-<!--                break;-->
-<!--        }-->
-
-<!--        switch (todayDate.getDay()) {-->
-<!--            case 0:-->
-<!--                day = 'Sunday';-->
-<!--                break;-->
-<!--            case 1:-->
-<!--                day = 'Monday';-->
-<!--                break;-->
-<!--            case 2:-->
-<!--                day = 'Tuesday';-->
-<!--                break;-->
-<!--            case 3:-->
-<!--                day = 'Wednesday';-->
-<!--                break;-->
-<!--            case 4:-->
-<!--                day = 'Thursday';-->
-<!--                break;-->
-<!--            case 5:-->
-<!--                day = 'Friday';-->
-<!--                break;-->
-<!--            case 6:-->
-<!--                day = 'Saturday';-->
-<!--                break;-->
-<!--            default:-->
-<!--                day = 'Stan\'s Day';-->
-<!--                break;-->
-<!--        }-->
-<!--    })-->
-
-<!--    </script>-->
