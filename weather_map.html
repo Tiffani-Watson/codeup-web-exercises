@@ -37,71 +37,88 @@
         }
     </style>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<!--    <script src="js/keys.js"></script>-->
     <script src="js/weather_map.js"></script>
     <script>
         $(document).ready(function() {
             let latLong = [29.7604, -95.3698];
             $.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${latLong[0]}&lon=${latLong[1]}&appid=e37273f7d8371c5675f3c31021d626c5`, function(data) {
                 console.log(data);
-                let weatherData = data.list.slice(0, 5);
+                let weatherData = data.list;
                 let weatherClasses = [];
-                weatherData.forEach(function(item) {
-                    let weather = item.weather[0].main;
-                    let weatherClass = 'default';
-                    switch (weather) {
-                        case 'Clear':
-                            weatherClass = 'clear';
-                            break;
-                        case 'Clouds':
-                            weatherClass = 'clouds';
-                            break;
-                        case 'Rain':
-                            weatherClass = 'rain';
-                            break;
-                        // Add more cases for different weather conditions if needed
+                weatherData.forEach(function(item, index) {
+                    if (index % 8 === 0) {
+                        let weather = item.weather[0].main;
+                        let weatherClass = 'default';
+                        switch (weather) {
+                            case 'Clear':
+                                weatherClass = 'clear';
+                                break;
+                            case 'Clouds':
+                                weatherClass = 'clouds';
+                                break;
+                            case 'Rain':
+                                weatherClass = 'rain';
+                                break;
+                            // Add more cases for different weather conditions if needed
+                        }
+                        weatherClasses.push(weatherClass);
+                        let date = new Date(item.dt * 1000);
+                        let dateString = date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                        $('.card').eq(index / 8).find('.date').text(dateString);
                     }
-                    weatherClasses.push(weatherClass);
                 });
                 $('.card').each(function(index) {
                     $(this).addClass(weatherClasses[index]);
-                    $(this).find('.weather-info').text(weatherData[index].weather[0].description);
-                    $(this).find('.temperature').text(Math.round(weatherData[index].main.temp - 273.15) + "°C");
+                    $(this).find('.weather-info').text(weatherData[index * 8].weather[0].description);
+
+                    let temperatureCelsius = Math.round(weatherData[index * 8].main.temp - 273.15);
+                    let temperatureFahrenheit = Math.round((temperatureCelsius * 9/5) + 32);
+
+                    $(this).find('.temperature').text(temperatureFahrenheit + '\u00B0F');
                 });
             });
         });
+
     </script>
 </head>
 <body>
 <div class="card">
     <h1>Weather Forecast</h1>
     <h2>Huntsville, Alabama</h2>
+    <div class="date"></div>
     <div class="weather-info"></div>
     <div class="temperature"></div>
 </div>
 <div class="card">
     <h1>Weather Forecast</h1>
     <h2>Huntsville, Alabama</h2>
+    <div class="date"></div>
     <div class="weather-info"></div>
     <div class="temperature"></div>
 </div>
 <div class="card">
     <h1>Weather Forecast</h1>
     <h2>Huntsville, Alabama</h2>
+    <div class="date"></div>
     <div class="weather-info"></div>
     <div class="temperature"></div>
 </div>
 <div class="card">
     <h1>Weather Forecast</h1>
     <h2>Huntsville, Alabama</h2>
+    <div class="date"></div>
     <div class="weather-info"></div>
     <div class="temperature"></div>
 </div>
 <div class="card">
     <h1>Weather Forecast</h1>
     <h2>Huntsville, Alabama</h2>
+    <div class="date"></div>
     <div class="weather-info"></div>
     <div class="temperature"></div>
 </div>
 </body>
 </html>
+
+
+
