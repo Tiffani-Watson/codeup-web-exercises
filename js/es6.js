@@ -45,15 +45,13 @@ const email = 'tiffani.marie.watson@gmail.com';
 const languages = ['javascript', 'java', 'css', 'html', 'mysql'];
 
 // TODO: rewrite the object literal using object property shorthand
-users.push({
-    name: name,
-    email: email,
-    languages: languages
-});
+users.forEach((user) => emails.push(user.email));
+users.forEach((user) => names.push(user.name));
 
 // TODO: replace `var` with `let` in the following variable declarations
-var emails = [];
-var names = [];
+let emails = [];
+let names = [];
+
 
 // TODO: rewrite the following using arrow functions
 users.forEach(function(user) {
