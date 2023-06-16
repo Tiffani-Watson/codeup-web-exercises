@@ -1,8 +1,11 @@
- $(document).ready(function () {
+
+// This ensures that the code executes only after the DOM has finished loading.
+$(document).ready(function () {
     let latLong = [-95.3698, 29.7604];
     let map;
     let marker;
 
+    // This function takes latitude and longitude as parameters. It makes an AJAX request to the OpenWeatherMap API to fetch weather forecast data for the specified location. The retrieved data is logged to the console. The function then processes the weather data, extracts relevant information, and updates the UI accordingly.
     function updateWeatherForecast(lat, lon) {
     $.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${MyOW_Key}`, function (data) {
     console.log(data);
@@ -22,7 +25,7 @@
     case 'Rain':
     weatherClass = 'rain';
     break;
-    // Add more cases for different weather conditions if needed
+
 }
     weatherClasses.push(weatherClass);
     let date = new Date(item.dt * 1000);
@@ -41,7 +44,7 @@
 });
 });
 }
-
+    // this function takes latitude and longitude as parameters. It makes an AJAX request to the Mapbox Geocoding API to retrieve the city and state information based on the provided coordinates. The function updates the city and state information in the UI.
     function updateCityState(latLng) {
     $.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${latLng[0]},${latLng[1]}.json?access_token=${MyApiKey}`, function (data) {
     let features = data.features;
@@ -58,6 +61,7 @@
 });
 }
 
+    // this function retrieves the location input value from an input field and makes an AJAX request to the Mapbox Geocoding API to get the coordinates of the specified location. If the location is found, it updates the `latLong` variable, calls `updateCityState`, `updateWeatherForecast`, and performs map-related actions.
     function searchLocation() {
     var location = $('#location-input').val();
     if (location) {
@@ -76,6 +80,7 @@
 }
 }
 
+    // This function sets up the Mapbox map, initializes a marker, and attaches event listeners for marker drag events. It also calls `updateCityState` and `updateWeatherForecast` when the marker is dragged.
     function initializeMap() {
     mapboxgl.accessToken = MyApiKey;
     map = new mapboxgl.Map({
@@ -99,6 +104,7 @@
 });
 }
 
+    // this function is called to set up the map and marker.
     initializeMap();
     updateWeatherForecast(latLong[1], latLong[0]);
     updateCityState(latLong);
@@ -120,3 +126,22 @@
     heading.style.color = 'black';
 }
 }, 3000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
