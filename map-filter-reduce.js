@@ -6,4 +6,11 @@ const threeLanguages = users.filter(function(user){
 })
 
 console.log(threeLanguages);
+//# 3: Use .map to create an array of strings where each element is a user's email address
+
+const emailAdd = users.map(function(user){
+    return user.email;
+})
+
+console.log(emailAdd);
 
